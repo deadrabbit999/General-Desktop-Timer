@@ -58,7 +58,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(357, 48);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Start Work Timer";
+            this.button1.Text = "Zoom!";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -227,7 +227,7 @@
             this.Controls.Add(this.button1);
             this.KeyPreview = true;
             this.Name = "Form1";
-            this.Text = "Matt\'s Timer";
+            this.Text = "tesat";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.frmMain_Resize);
