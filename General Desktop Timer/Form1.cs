@@ -15,8 +15,8 @@ using Microsoft.VisualBasic;
 namespace General_Desktop_Timer
 {
      //enable the demand security so that only full trust applications have class access
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name = "FullTrust")]
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name = "FullTrust")]
+    //[System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name = "FullTrust")]
+    //[System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name = "FullTrust")]
 
     public partial class Form1 : Form
     {
@@ -28,7 +28,7 @@ namespace General_Desktop_Timer
         int counter;
         bool stopwatchCheck;
         string agentName = Environment.UserName;
-        string dskPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        
         private System.Windows.Forms.ContextMenu contextMenu1;
         private System.Windows.Forms.MenuItem menuItem1;
         bool pausedFlag;
@@ -85,7 +85,7 @@ namespace General_Desktop_Timer
         //event handler for the closing event -- the output dump is here so the timer can be used all day and captures even on an accidetnal close
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            string dskPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             //if the file exists we don't need to write the headers so we can skip the additional line write and just append the data created
             if (File.Exists(dskPath + "\\" + agentName + ".csv"))
             {
@@ -162,8 +162,8 @@ namespace General_Desktop_Timer
 
                 statusChecktime.Start();
                 actualTimer.Start();
-                statusName = "Work Time";
-                notifyIcon1.ShowBalloonTip(500, "Status Change", "You are now in Work Time status", ToolTipIcon.Info);
+                statusName = "Moderation";
+                notifyIcon1.ShowBalloonTip(500, "Status Change", "You are now in Moderation status", ToolTipIcon.Info);
 
             } 
         }
@@ -195,8 +195,8 @@ namespace General_Desktop_Timer
 
                 statusChecktime.Start();
                 actualTimer.Start();
-                statusName = "Pre-Work";
-                notifyIcon1.ShowBalloonTip(500, "Status Change", "You are now in Pre-Work status", ToolTipIcon.Info);
+                statusName = "Email";
+                notifyIcon1.ShowBalloonTip(500, "Status Change", "You are now in Email status", ToolTipIcon.Info);
             }
         }
 
@@ -226,8 +226,8 @@ namespace General_Desktop_Timer
 
                 statusChecktime.Start();
                 actualTimer.Start();
-                statusName = "Post-Work";
-                notifyIcon1.ShowBalloonTip(500, "Status Change", "You are now in Post-Work status", ToolTipIcon.Info);
+                statusName = "Meeting";
+                notifyIcon1.ShowBalloonTip(500, "Status Change", "You are now in Meeting status", ToolTipIcon.Info);
 
             }
         }
@@ -291,7 +291,7 @@ namespace General_Desktop_Timer
             TimerData.Add(new agentTime() { agentStatus = statusName, agentID = agentName, statusTime = actualTimer.Elapsed.TotalSeconds, startTime = DateTime.Now, currentDate = DateTime.Today.ToString("d") });
             notifyIcon1.ShowBalloonTip(500, "Status Change", "Timer Stopped", ToolTipIcon.Info);
             actualTimer.Reset();
-            label1.Text = "Timer Stopped";
+            
         }
 
 
@@ -323,6 +323,100 @@ namespace General_Desktop_Timer
                 MessageBox.Show("The Timer is not running");
             }
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            stopwatchCheck = actualTimer.IsRunning;
+
+            if (pausedFlag == true)
+            {
+                notifyIcon1.ShowBalloonTip(500, "Timer Paused", "Please Resume Your Current Session Before Changing Status", ToolTipIcon.Info);
+
+            }
+
+            else
+            {
+
+                //we need a check here to understand if the timer is actually running and if we need to write anything, or if we can just start the timer
+                if (stopwatchCheck == true)
+                {
+                    actualTimer.Stop();
+                    TimerData.Add(new agentTime() { agentStatus = statusName, agentID = agentName, statusTime = actualTimer.Elapsed.TotalSeconds, startTime = DateTime.Now, currentDate = DateTime.Today.ToString("d") });
+                    actualTimer.Reset();
+                    statusChecktime.Stop();
+                    counter = 0;
+                }
+
+                statusChecktime.Start();
+                actualTimer.Start();
+                statusName = "Team Help";
+                notifyIcon1.ShowBalloonTip(500, "Status Change", "You are now in Team Help status", ToolTipIcon.Info);
+
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            stopwatchCheck = actualTimer.IsRunning;
+
+                if (pausedFlag == true)
+                {
+                    notifyIcon1.ShowBalloonTip(500, "Timer Paused", "Please Resume Your Current Session Before Changing Status", ToolTipIcon.Info);
+
+                }
+
+                else
+                {
+
+                    //we need a check here to understand if the timer is actually running and if we need to write anything, or if we can just start the timer
+                    if (stopwatchCheck == true)
+                    {
+                        actualTimer.Stop();
+                        TimerData.Add(new agentTime() { agentStatus = statusName, agentID = agentName, statusTime = actualTimer.Elapsed.TotalSeconds, startTime = DateTime.Now, currentDate = DateTime.Today.ToString("d") });
+                        actualTimer.Reset();
+                        statusChecktime.Stop();
+                        counter = 0;
+                    }
+
+                    statusChecktime.Start();
+                    actualTimer.Start();
+                    statusName = "Tracker Work";
+                    notifyIcon1.ShowBalloonTip(500, "Status Change", "You are now in Tracker Work status", ToolTipIcon.Info);
+
+                }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+            stopwatchCheck = actualTimer.IsRunning;
+
+                if (pausedFlag == true)
+                {
+                    notifyIcon1.ShowBalloonTip(500, "Timer Paused", "Please Resume Your Current Session Before Changing Status", ToolTipIcon.Info);
+
+                }
+
+                else
+                {
+
+                    //we need a check here to understand if the timer is actually running and if we need to write anything, or if we can just start the timer
+                    if (stopwatchCheck == true)
+                    {
+                        actualTimer.Stop();
+                        TimerData.Add(new agentTime() { agentStatus = statusName, agentID = agentName, statusTime = actualTimer.Elapsed.TotalSeconds, startTime = DateTime.Now, currentDate = DateTime.Today.ToString("d") });
+                        actualTimer.Reset();
+                        statusChecktime.Stop();
+                        counter = 0;
+                    }
+
+                    statusChecktime.Start();
+                    actualTimer.Start();
+                    statusName = "Non-Work Interruption";
+                    notifyIcon1.ShowBalloonTip(500, "Status Change", "You are now in Non-Work Interruption status", ToolTipIcon.Info);
+
+                }
         }
 
         //*******************************context menu items and actions******************************************************************************
@@ -504,30 +598,12 @@ namespace General_Desktop_Timer
 
         //*************************************************************************setup function****************************************************
 
-        //tick timer that checks to see how long the agent has been sitting in the misc timer status, reminds them after 5 mintues to ensure correct status is used
-        private void statusTime_Tick(object sender, EventArgs e)
-        {
-            counter++;
-            //The timespan will handle the push from the elapsed time in seconds to the label so we can update the user
-            //This shouldn't require a background worker since it's a fairly small app and nothing is resource heavy
-
-            var timespan = TimeSpan.FromSeconds(actualTimer.Elapsed.Seconds);
-
-            //convert the time in seconds to the format requested by the user
-            label1.Text=("Elapsed Time in " + statusName+" "+ timespan.ToString(@"mm\:ss"));
-
-            //pull the thread into updating the UI
-            Application.DoEvents();
-
-
-            
-        }
 
         //generates the timer object that will be used to track the time in status
         private void CreatingTimer()
         {
             statusChecktime = new Timer();
-            statusChecktime.Tick += new EventHandler(statusTime_Tick);
+
             statusChecktime.Interval = 1000;
         }
 
