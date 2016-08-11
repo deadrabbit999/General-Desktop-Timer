@@ -42,9 +42,8 @@
             this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.menuItem6 = new System.Windows.Forms.MenuItem();
             this.menuItem7 = new System.Windows.Forms.MenuItem();
-            this.menuItem8 = new System.Windows.Forms.MenuItem();
-            this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.menuItem9 = new System.Windows.Forms.MenuItem();
+            this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -105,7 +104,7 @@
             // notifyIcon1
             // 
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "General_Desktop_Timer";
+            this.notifyIcon1.Text = "Amanda\'s Timer";
             this.notifyIcon1.Visible = true;
             // 
             // contextMenu1
@@ -115,65 +114,58 @@
             this.menuItem2,
             this.menuItem3,
             this.menuItem5,
-            this.menuItem4,
-            this.menuItem9});
+            this.menuItem6,
+            this.menuItem7,
+            this.menuItem9,
+            this.menuItem4});
             // 
             // menuItem1
             // 
             this.menuItem1.Index = 0;
-            this.menuItem1.Text = "Start Work Timer";
+            this.menuItem1.Text = "Start Moderation";
             this.menuItem1.Click += new System.EventHandler(this.menuItem1_Click);
             // 
             // menuItem2
             // 
             this.menuItem2.Index = 1;
-            this.menuItem2.Text = "Start Pre-Work Timer";
+            this.menuItem2.Text = "Start Meeting";
             this.menuItem2.Click += new System.EventHandler(this.menuItem2_Click);
             // 
             // menuItem3
             // 
             this.menuItem3.Index = 2;
-            this.menuItem3.Text = "Start Post-Work Timer";
+            this.menuItem3.Text = "Start Email";
             this.menuItem3.Click += new System.EventHandler(this.menuItem3_Click);
             // 
             // menuItem5
             // 
             this.menuItem5.Index = 3;
-            this.menuItem5.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem6,
-            this.menuItem7,
-            this.menuItem8});
-            this.menuItem5.Text = "Start Misc Timer";
+            this.menuItem5.Text = "Team Help";
+            this.menuItem5.Click += new System.EventHandler(this.menuItem5_Click);
             // 
             // menuItem6
             // 
-            this.menuItem6.Index = 0;
-            this.menuItem6.Text = "Emergency Break";
-            this.menuItem6.Click += new System.EventHandler(this.SubmenuItem_Click);
+            this.menuItem6.Index = 4;
+            this.menuItem6.Text = "Tracker Work";
+            this.menuItem6.Click += new System.EventHandler(this.menuItem6_Click);
             // 
             // menuItem7
             // 
-            this.menuItem7.Index = 1;
-            this.menuItem7.Text = "Meeting";
-            this.menuItem7.Click += new System.EventHandler(this.SubmenuItem_Click);
-            // 
-            // menuItem8
-            // 
-            this.menuItem8.Index = 2;
-            this.menuItem8.Text = "Misc Break";
-            this.menuItem8.Click += new System.EventHandler(this.SubmenuItem_Click);
-            // 
-            // menuItem4
-            // 
-            this.menuItem4.Index = 4;
-            this.menuItem4.Text = "Close";
-            this.menuItem4.Click += new System.EventHandler(this.menuItem4_Click);
+            this.menuItem7.Index = 5;
+            this.menuItem7.Text = "Non-Work Interruption";
+            this.menuItem7.Click += new System.EventHandler(this.menuItem7_Click);
             // 
             // menuItem9
             // 
-            this.menuItem9.Index = 5;
+            this.menuItem9.Index = 6;
             this.menuItem9.Text = "Pause Timer";
             this.menuItem9.Click += new System.EventHandler(this.menuItem9_Click);
+            // 
+            // menuItem4
+            // 
+            this.menuItem4.Index = 7;
+            this.menuItem4.Text = "Close";
+            this.menuItem4.Click += new System.EventHandler(this.menuItem4_Click);
             // 
             // button2
             // 
@@ -276,10 +268,6 @@
         private System.Windows.Forms.MenuItem menuItem2;
         private System.Windows.Forms.MenuItem menuItem3;
         private System.Windows.Forms.MenuItem menuItem4;
-        private System.Windows.Forms.MenuItem menuItem5;
-        private System.Windows.Forms.MenuItem menuItem6;
-        private System.Windows.Forms.MenuItem menuItem7;
-        private System.Windows.Forms.MenuItem menuItem8;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button6;
@@ -287,6 +275,9 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.MenuItem menuItem5;
+        private System.Windows.Forms.MenuItem menuItem6;
+        private System.Windows.Forms.MenuItem menuItem7;
     }
 }
 
